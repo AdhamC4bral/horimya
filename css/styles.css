@@ -1,0 +1,1508 @@
+/* Nice Select CSS */
+/* Estilo para o componente de seleção "Nice Select" */
+.nice-select {
+  -webkit-tap-highlight-color: transparent; /* Remove a cor de destaque ao tocar em dispositivos móveis */
+  background-color: #f8f8f8; /* Define a cor de fundo do seletor */
+  border-radius: 50px; /* Arredonda as bordas do seletor */
+  border: solid 1px transparent; /* Define uma borda transparente */
+  box-sizing: border-box; /* Inclui padding e borda no tamanho total do elemento */
+  clear: both; /* Limpa flutuações anteriores */
+  cursor: pointer; /* Muda o cursor para uma mão ao passar sobre o seletor */
+  display: block; /* Exibe como um bloco */
+  float: left; /* Flutua à esquerda */
+  font-family: inherit; /* Herda a fonte do elemento pai */
+  font-size: 18px; /* Define o tamanho da fonte */
+  font-weight: normal; /* Define o peso da fonte como normal */
+  height: 42px; /* Define a altura do seletor */
+  line-height: 40px; /* Define a altura da linha */
+  outline: none; /* Remove o contorno ao focar */
+  padding-left: 30px; /* Adiciona espaçamento à esquerda */
+  padding-right: 30px; /* Adiciona espaçamento à direita */
+  position: relative; /* Define a posição relativa */
+  text-align: left !important; /* Alinha o texto à esquerda */
+  -webkit-transition: all 0.2s ease-in-out; /* Transição suave para mudanças de estado */
+  transition: all 0.2s ease-in-out; /* Transição suave para mudanças de estado */
+  -webkit-user-select: none; /* Impede a seleção de texto */
+  -moz-user-select: none; /* Impede a seleção de texto */
+  -ms-user-select: none; /* Impede a seleção de texto */
+  user-select: none; /* Impede a seleção de texto */
+  white-space: nowrap; /* Impede quebra de linha */
+  width: 200px; /* Define a largura do seletor */
+}
+.nice-select:hover {
+  border-color: #dbdbdb; /* Muda a cor da borda ao passar o mouse */
+}
+.nice-select:active,
+.nice-select.open,
+.nice-select:focus {
+  border-color: #999; /* Muda a cor da borda ao ativar ou focar */
+}
+.nice-select:after {
+  border-bottom: 2px solid #363636; /* Define a borda inferior da seta */
+  border-right: 2px solid #363636; /* Define a borda direita da seta */
+  content: ""; /* Cria um conteúdo vazio para a seta */
+  display: block; /* Exibe como um bloco */
+  height: 5px; /* Define a altura da seta */
+  margin-top: -4px; /* Ajusta a margem superior */
+  pointer-events: none; /* Desativa eventos de ponteiro */
+  position: absolute; /* Define a posição absoluta */
+  right: 30px; /* Define a posição à direita */
+  top: 50%; /* Centraliza verticalmente */
+  -webkit-transform-origin: 66% 66%; /* Define a origem da transformação */
+  -ms-transform-origin: 66% 66%; /* Define a origem da transformação */
+  transform-origin: 66% 66%; /* Define a origem da transformação */
+  -webkit-transform: rotate(45deg); /* Rotaciona a seta */
+  -ms-transform: rotate(45deg); /* Rotaciona a seta */
+  transform: rotate(45deg); /* Rotaciona a seta */
+  -webkit-transition: all 0.15s ease-in-out; /* Transição suave para mudanças de estado */
+  transition: all 0.15s ease-in-out; /* Transição suave para mudanças de estado */
+  width: 5px; /* Define a largura da seta */
+}
+.nice-select.open:after {
+  -webkit-transform: rotate(-135deg); /* Rotaciona a seta ao abrir */
+  -ms-transform: rotate(-135deg); /* Rotaciona a seta ao abrir */
+  transform: rotate(-135deg); /* Rotaciona a seta ao abrir */
+}
+.nice-select.open .list {
+  top: auto !important; /* Reseta a posição superior */
+  bottom: 100%; /* Posiciona a lista abaixo do seletor */
+  opacity: 1; /* Torna a lista visível */
+  pointer-events: auto; /* Ativa eventos de ponteiro */
+  -webkit-transform: scale(1) translateY(0); /* Expande a lista */
+  -ms-transform: scale(1) translateY(0); /* Expande a lista */
+  transform: scale(1) translateY(0); /* Expande a lista */
+}
+.nice-select.disabled {
+  border-color: #ededed; /* Muda a cor da borda para desabilitado */
+  color: #999; /* Muda a cor do texto para desabilitado */
+  pointer-events: none; /* Desativa eventos de ponteiro */
+}
+.nice-select.disabled:after {
+  border-color: #cccccc; /* Muda a cor da seta para desabilitado */
+}
+.nice-select.wide {
+  width: 100%; /* Define a largura completa */
+}
+.nice-select.wide .list {
+  left: 0 !important; /* Alinha a lista à esquerda */
+  right: 0 !important; /* Alinha a lista à direita */
+}
+.nice-select.right {
+  float: right; /* Flutua à direita */
+}
+.nice-select.right .list {
+  left: auto; /* Reseta a posição à esquerda */
+  right: 0; /* Alinha a lista à direita */
+}
+.nice-select.small {
+  font-size: 18px; /* Define o tamanho da fonte */
+  height: 50px; /* Define a altura do seletor */
+  line-height: 34px; /* Define a altura da linha */
+}
+.nice-select.small:after {
+  height: 4px; /* Define a altura da seta */
+  width: 4px; /* Define a largura da seta */
+}
+.nice-select.small .option {
+  line-height: 34px; /* Define a altura da linha das opções */
+  min-height: 34px; /* Define a altura mínima das opções */
+}
+.nice-select .list {
+  background-color: #fff; /* Define a cor de fundo da lista */
+  border-radius: 5px; /* Arredonda as bordas da lista */
+  box-shadow: 0 0 0 1px rgba(68, 68, 68, 0.11); /* Adiciona sombra à lista */
+  box-sizing: border-box; /* Inclui padding e borda no tamanho total do elemento */
+  margin-top: 4px; /* Adiciona margem superior */
+  opacity: 0; /* Torna a lista invisível */
+  overflow: hidden; /* Esconde o conteúdo que ultrapassa as bordas */
+  padding: 0; /* Remove o padding */
+  pointer-events: none; /* Desativa eventos de ponteiro */
+  position: absolute; /* Define a posição absoluta */
+  bottom: 100%; /* Posiciona a lista abaixo do seletor */
+  left: 0; /* Alinha a lista à esquerda */
+  -webkit-transform-origin: 50% 0; /* Define a origem da transformação */
+  -ms-transform-origin: 50% 0; /* Define a origem da transformação */
+  transform-origin: 50% 0; /* Define a origem da transformação */
+  -webkit-transform: scale(0.75) translateY(-21px); /* Reduz e desloca a lista */
+  -ms-transform: scale(0.75) translateY(-21px); /* Reduz e desloca a lista */
+  transform: scale(0.75) translateY(-21px); /* Reduz e desloca a lista */
+  -webkit-transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25),
+    opacity 0.15s ease-out; /* Transição suave para mudanças de estado */
+  transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out; /* Transição suave para mudanças de estado */
+  z-index: 9; /* Define a ordem de empilhamento */
+  width: 200px; /* Define a largura da lista */
+}
+.nice-select .list:hover .option:not(:hover) {
+  background-color: transparent !important; /* Remove o fundo das opções não selecionadas ao passar o mouse */
+}
+.nice-select .option {
+  cursor: pointer; /* Muda o cursor para uma mão ao passar sobre a opção */
+  font-weight: 400; /* Define o peso da fonte */
+  line-height: 40px; /* Define a altura da linha */
+  list-style: none; /* Remove o estilo de lista */
+  min-height: 40px; /* Define a altura mínima da opção */
+  outline: none; /* Remove o contorno ao focar */
+  padding-left: 30px; /* Adiciona espaçamento à esquerda */
+  padding-right: 29px; /* Adiciona espaçamento à direita */
+  text-align: left; /* Alinha o texto à esquerda */
+  -webkit-transition: all 0.2s; /* Transição suave para mudanças de estado */
+  transition: all 0.2s; /* Transição suave para mudanças de estado */
+}
+.nice-select .option:hover,
+.nice-select .option.focus,
+.nice-select .option.selected.focus {
+  background-color: #f6f6f6; /* Muda a cor de fundo ao passar o mouse ou focar */
+}
+.nice-select .option.selected {
+  font-weight: bold; /* Define o peso da fonte como negrito */
+}
+.nice-select .option.disabled {
+  background-color: transparent; /* Remove o fundo para opções desabilitadas */
+  color: #999; /* Muda a cor do texto para desabilitado */
+  cursor: default; /* Muda o cursor para padrão */
+}
+
+.no-csspointerevents .nice-select .list {
+  display: none; /* Esconde a lista quando CSS pointer-events não é suportado */
+}
+
+.no-csspointerevents .nice-select.open .list {
+  display: block; /* Exibe a lista quando o seletor está aberto e CSS pointer-events não é suportado */
+}
+
+/* Regras Globais de CSS */
+/* Regras globais de estilo */
+* {
+  box-sizing: border-box; /* Inclui padding e borda no tamanho total do elemento */
+  font-family: "Lato", sans-serif; /* Define a fonte padrão */
+  list-style-type: none; /* Remove o estilo de lista */
+  margin: 0; /* Remove margens */
+  padding: 0; /* Remove padding */
+  scroll-behavior: smooth !important; /* Comportamento de rolagem suave */
+}
+
+html {
+  font-size: 16px; /* Define o tamanho da fonte base */
+}
+
+::selection {
+  background-color: #ffffff; /* Cor de fundo para seleção de texto */
+  color: #962cdd; /* Cor do texto para seleção */
+}
+
+body {
+  font-family: "Lato", sans-serif; /* Define a fonte para o corpo */
+  color: #363636; /* Cor do texto principal */
+  font-size: 1.125rem; /* Tamanho da fonte */
+  overflow-x: hidden; /* Esconde a rolagem horizontal */
+}
+
+img {
+  max-width: 100%; /* Largura máxima das imagens */
+  height: auto; /* Altura automática para manter proporção */
+}
+
+a {
+  color: #ffffff; /* Cor dos links */
+  text-decoration: none; /* Remove sublinhado dos links */
+}
+
+h1 {
+  font-size: 4.5rem; /* Tamanho da fonte para h1 */
+  font-weight: 900; /* Peso da fonte para h1 */
+}
+
+h2 {
+  font-size: 3.75rem; /* Tamanho da fonte para h2 */
+  font-weight: 900; /* Peso da fonte para h2 */
+}
+
+p {
+  color: #808080; /* Cor do texto dos parágrafos */
+  line-height: 2; /* Altura da linha dos parágrafos */
+}
+
+section {
+  padding: 50px; /* Padding para seções */
+}
+
+::placeholder {
+  font-size: 18px; /* Tamanho da fonte para placeholders */
+  color: #808080; /* Cor do texto para placeholders */
+}
+
+/* Preloader */
+/* Estilo para o preloader */
+.preloader {
+  background-color: #ffffff; /* Cor de fundo do preloader */
+  position: fixed; /* Posição fixa */
+  left: 0; /* Alinhado à esquerda */
+  top: 0; /* Alinhado ao topo */
+  height: 100%; /* Altura total */
+  width: 100%; /* Largura total */
+  z-index: 150; /* Ordem de empilhamento */
+  display: flex; /* Exibe como flexbox */
+  display: -ms-flexbox; /* Exibe como flexbox para IE */
+  -ms-flex-align: center; /* Alinha itens ao centro no IE */
+  -ms-flex-pack: center; /* Justifica itens ao centro no IE */
+  align-items: center; /* Alinha itens ao centro */
+  justify-content: center; /* Justifica itens ao centro */
+  transition: all 1s ease; /* Transição suave para mudanças de estado */
+  -webkit-transition: all 1s ease; /* Transição suave para mudanças de estado */
+}
+
+.preloader.opacity-0 {
+  opacity: 0; /* Torna o preloader invisível */
+}
+
+.preloader .loader {
+  height: 2.5rem; /* Altura do loader */
+  width: 2.5rem; /* Largura do loader */
+  border: 0.25rem solid #d90647; /* Borda do loader */
+  border-radius: 50%; /* Arredonda as bordas do loader */
+  border-top: 0.25rem solid transparent; /* Borda superior transparente */
+  border-bottom: 0.25rem solid transparent; /* Borda inferior transparente */
+  animation: spin 2s linear infinite; /* Animação de rotação */
+  -webkit-animation: spin 0.8s linear infinite; /* Animação de rotação para Webkit */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); /* Início da rotação */
+    -webkit-transform: rotate(0deg); /* Início da rotação para Webkit */
+  }
+
+  100% {
+    transform: rotate(360deg); /* Fim da rotação */
+    -webkit-transform: rotate(360deg); /* Fim da rotação para Webkit */
+  }
+}
+
+@-webkit-keyframes spin {
+  0% {
+    transform: rotate(0deg); /* Início da rotação para Webkit */
+    -webkit-transform: rotate(0deg); /* Início da rotação para Webkit */
+  }
+
+  100% {
+    transform: rotate(360deg); /* Fim da rotação para Webkit */
+    -webkit-transform: rotate(360deg); /* Fim da rotação para Webkit */
+  }
+}
+/* Fim: Preloader */
+
+/* Fim: Regras Globais de CSS */
+
+/* Componentes Reutilizáveis */
+/* Estilos para componentes reutilizáveis */
+.bold-text {
+  font-weight: 700; /* Define o peso da fonte como negrito */
+}
+
+.btn {
+  background: #fff; /* Cor de fundo do botão */
+  padding: 0.9375rem 2.5rem; /* Padding do botão */
+  color: #363636; /* Cor do texto do botão */
+  border-radius: 3.125rem; /* Arredonda as bordas do botão */
+  font-size: 1.125rem; /* Tamanho da fonte do botão */
+  font-weight: 700; /* Peso da fonte do botão */
+  text-align: center; /* Alinha o texto ao centro */
+  box-shadow: 10px 0 40px rgba(0, 0, 0, 0.15); /* Sombra do botão */
+  display: inline-block; /* Exibe como bloco inline */
+  cursor: pointer; /* Muda o cursor para uma mão ao passar sobre o botão */
+}
+
+.btn:hover {
+  background: #fff; /* Cor de fundo do botão ao passar o mouse */
+  color: #ffffff; /* Cor do texto do botão ao passar o mouse */
+  transition: 0.3s; /* Transição suave para mudanças de estado */
+  transform: scale(1.03); /* Aumenta ligeiramente o botão ao passar o mouse */
+}
+
+.red_dot {
+  background: linear-gradient(to bottom, #962cdd 10%, #b76ee7 100%); /* Gradiente para o texto */
+  background-clip: border-box; /* Clip de fundo */
+  -webkit-background-clip: text; /* Clip de fundo para Webkit */
+  -webkit-text-fill-color: transparent; /* Preenchimento de texto transparente para Webkit */
+}
+
+.section-description {
+  margin-top: 180px; /* Margem superior */
+}
+
+.little-description {
+  margin-top: 1.875rem; /* Margem superior */
+  font-size: 1.125rem; /* Tamanho da fonte */
+}
+
+.row {
+  max-width: 1176px; /* Largura máxima da linha */
+  margin: auto; /* Centraliza a linha */
+}
+/* Fim: Componentes Reutilizáveis */
+
+/* Regras Principais de CSS */
+
+/* Estilo da Seção de Cabeçalho */
+#home {
+  background: #962cdd; /* Cor de fundo */
+  background: -moz-linear-gradient(
+    top,
+    #962cdd 37%,
+    #b76ee7 98%
+  ); /* Gradiente para Firefox */
+  background: -webkit-linear-gradient(
+    top,
+    #962cdd 37%,
+    #b76ee7 98%
+  ); /* Gradiente para Chrome/Safari */
+  background: linear-gradient(
+    to bottom,
+    #962cdd 37%,
+    #b76ee7 98%
+  ); /* Gradiente padrão */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d90647', endColorstr='#eb402c',GradientType=0 ); /* Gradiente para IE */
+  background-repeat: no-repeat; /* Não repete o fundo */
+  color: #ffffff; /* Cor do texto */
+  height: 100%; /* Altura total */
+  width: 100%; /* Largura total */
+  padding: 50px; /* Padding */
+  position: relative; /* Posição relativa */
+}
+
+/* Estilo da Navbar */
+nav {
+  display: flex; /* Exibe como flexbox */
+  flex-flow: row; /* Direção do flexbox */
+  justify-content: space-between; /* Espaça os itens entre si */
+}
+
+.logo {
+  font-size: 3.125rem; /* Tamanho da fonte do logotipo */
+  font-weight: 900; /* Peso da fonte do logotipo */
+}
+
+#navbar ul li {
+  display: inline-block; /* Exibe como bloco inline */
+  margin: 20px; /* Margem ao redor dos itens da lista */
+  font-size: 18px; /* Tamanho da fonte dos itens da lista */
+  font-weight: 400; /* Peso da fonte dos itens da lista */
+}
+
+#navbar ul li:hover {
+  text-decoration: line-through; /* Adiciona linha através do texto ao passar o mouse */
+}
+
+/* Navbar Fixa */
+.sticky {
+  position: fixed; /* Posição fixa */
+  left: 0; /* Alinhado à esquerda */
+  top: 0; /* Alinhado ao topo */
+  width: 100%; /* Largura total */
+  background-color: #fff; /* Cor de fundo */
+  z-index: 500; /* Ordem de empilhamento */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra */
+  color: #b76ee7; /* Cor do texto */
+  padding: 10px 40px; /* Padding */
+  transition: 0.3s; /* Transição suave para mudanças de estado */
+}
+
+.sticky .logo {
+  color: #b76ee7; /* Cor do logotipo */
+}
+
+.sticky #navbar ul li a {
+  color: #363636; /* Cor dos links */
+}
+
+.sticky #navbar ul li a:hover {
+  color: #b76ee7; /* Cor dos links ao passar o mouse */
+}
+
+.sticky .navbar {
+  padding: 10px; /* Padding da navbar */
+}
+
+.sticky .mobile-menu {
+  font-size: 1.875rem; /* Tamanho da fonte do menu móvel */
+  float: right; /* Flutua à direita */
+  display: block; /* Exibe como bloco */
+  margin: -10px 10px; /* Margem ao redor do menu móvel */
+}
+
+/* Estilo da Navbar Móvel */
+#myNav {
+  display: block; /* Exibe como bloco */
+}
+#mobileNav {
+  position: absolute; /* Posição absoluta */
+  right: 10%; /* Alinhado à direita */
+  display: none; /* Esconde o menu móvel em dispositivos grandes */
+  cursor: pointer; /* Muda o cursor para uma mão ao passar sobre o menu móvel */
+  user-select: none; /* Impede a seleção de texto */
+}
+
+#mobileNav span {
+  font-size: 1.875rem; /* Tamanho da fonte do menu móvel */
+}
+
+.mobileNavOverlay {
+  width: 0; /* Largura inicial zero */
+  height: 100vh; /* Altura total da visualização */
+  position: fixed; /* Posição fixa */
+  top: 0; /* Alinhado ao topo */
+  left: 0; /* Alinhado à esquerda */
+  background-color: #ffffff; /* Cor de fundo */
+  z-index: 9999; /* Ordem de empilhamento */
+  overflow: hidden; /* Esconde conteúdo que ultrapassa as bordas */
+  color: #b76ee7; /* Cor do texto */
+  transition: 0.3s; /* Transição suave para mudanças de estado */
+  text-align: center; /* Alinha o texto ao centro */
+}
+
+.overlay-content {
+  text-align: center; /* Alinha o texto ao centro */
+  position: absolute; /* Posição absoluta */
+  top: 50%; /* Centraliza verticalmente */
+  left: 50%; /* Centraliza horizontalmente */
+  transform: translate(-50%, -50%); /* Ajusta a posição para centralizar */
+}
+
+.overlay-content a {
+  color: #363636; /* Cor dos links */
+  font-size: 1.875rem; /* Tamanho da fonte dos links */
+  font-weight: 600; /* Peso da fonte dos links */
+  display: block; /* Exibe como bloco */
+  margin-top: 1.25rem; /* Margem superior */
+  letter-spacing: 0.1875rem; /* Espaçamento entre letras */
+}
+
+.overlay-content a:hover {
+  color: #b76ee7; /* Cor dos links ao passar o mouse */
+}
+/* Fim: Estilo do Menu Móvel */
+
+/* Estilo da Seção Hero */
+
+#hero {
+  margin: 100px 0; /* Margem superior e inferior */
+}
+
+.hero-description {
+  margin-top: 3.125rem; /* Margem superior */
+  float: left; /* Flutua à esquerda */
+  margin-left: 1.875rem; /* Margem à esquerda */
+}
+
+.hero-description p {
+  font-size: 1.25rem; /* Tamanho da fonte dos parágrafos */
+  margin-top: 1.25rem; /* Margem superior */
+  margin-bottom: 5rem; /* Margem inferior */
+  color: #fff; /* Cor do texto */
+}
+
+.download-btn {
+  background: linear-gradient(to bottom, #962cdd 10%, #b76ee7 100%); /* Gradiente para o texto */
+  background-clip: border-box; /* Clip de fundo */
+  -webkit-background-clip: text; /* Clip de fundo para Webkit */
+  -webkit-text-fill-color: transparent; /* Preenchimento de texto transparente para Webkit */
+}
+
+.hero-img {
+  max-width: 28% !important; /* Largura máxima da imagem */
+  float: right; /* Flutua à direita */
+  z-index: 1; /* Ordem de empilhamento */
+  position: absolute; /* Posição absoluta */
+  /* right: 9.375rem; */
+}
+
+/* Divisor de Forma Personalizado */
+
+.shape-divider {
+  margin-top: 100px; /* Margem superior */
+}
+
+.custom-shape-divider-bottom-1603385849 {
+  position: absolute; /* Posição absoluta */
+  bottom: -2px; /* Alinhado ao fundo */
+  left: 0; /* Alinhado à esquerda */
+  width: 100%; /* Largura total */
+  overflow: hidden; /* Esconde conteúdo que ultrapassa as bordas */
+  line-height: 0; /* Altura da linha zero */
+  transform: rotate(180deg); /* Rotaciona o divisor */
+}
+
+.custom-shape-divider-bottom-1603385849 svg {
+  position: relative; /* Posição relativa */
+  display: block; /* Exibe como bloco */
+  width: calc(100% + 1.3px); /* Largura calculada */
+  height: 150px; /* Altura do SVG */
+  transform: rotateY(180deg); /* Rotaciona o SVG */
+  z-index: -1; /* Ordem de empilhamento */
+}
+
+.custom-shape-divider-bottom-1603385849 .shape-fill {
+  fill: #ffffff; /* Preenchimento da forma */
+}
+
+#scrollUp {
+  display: none; /* Esconde por padrão */
+  position: fixed; /* Posição fixa */
+  bottom: 20px; /* Alinhado ao fundo */
+  right: 30px; /* Alinhado à direita */
+  z-index: 99; /* Ordem de empilhamento */
+  border: none; /* Remove bordas */
+  outline: none; /* Remove contorno */
+  background: #962cdd; /* Cor de fundo */
+  background: -moz-linear-gradient(
+    top,
+    #962cdd 37%,
+    #b76ee7 98%
+  ); /* Gradiente para Firefox */
+  background: -webkit-linear-gradient(
+    top,
+    #962cdd 37%,
+    #b76ee7 98%
+  ); /* Gradiente para Chrome/Safari */
+  background: linear-gradient(
+    to bottom,
+    #962cdd 37%,
+    #b76ee7 98%
+  ); /* Gradiente padrão */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d90647', endColorstr='#eb402c',GradientType=0 ); /* Gradiente para IE */
+  background-repeat: no-repeat; /* Não repete o fundo */
+  color: #ffffff; /* Cor do texto */
+  cursor: pointer; /* Muda o cursor para uma mão ao passar sobre o botão */
+  width: 50px; /* Largura */
+  height: 50px; /* Altura */
+  border-radius: 50%; /* Arredonda as bordas */
+  font-size: 18px; /* Tamanho da fonte */
+  box-shadow: 0 10px 30px rgba(54, 54, 54, 0.3); /* Sombra */
+}
+
+#scrollUp:hover {
+  background-color: #555; /* Cor de fundo ao passar o mouse */
+  transform: scale(1.1); /* Aumenta ligeiramente o botão ao passar o mouse */
+  transition: 0.3s; /* Transição suave para mudanças de estado */
+}
+
+/* Fim: Estilo da Seção de Cabeçalho */
+
+/* Estilo da Seção de Recursos */
+#features {
+  height: 100%; /* Altura total */
+  padding-bottom: 200px; /* Padding inferior */
+  border-bottom: 1px solid #e0e0e0; /* Borda inferior */
+}
+
+.features_3 {
+  float: right; /* Flutua à direita */
+}
+
+.second-features-row {
+  margin-top: 6.25rem; /* Margem superior */
+}
+/* Fim: Estilo da Seção de Recursos */
+
+/* Estilo da Seção de Depoimentos */
+#testimonial {
+  margin-top: 50px; /* Margem superior */
+}
+#testimonial .stylish_heading {
+  text-align: center; /* Alinha o texto ao centro */
+}
+#testimonial .row {
+  margin-top: 6.25rem; /* Margem superior */
+}
+
+.bubble {
+  background-color: #fff; /* Cor de fundo */
+  border: 1px solid #dfdfdf; /* Borda */
+  padding: 20px 30px; /* Padding */
+  position: relative; /* Posição relativa */
+}
+
+.bubble::after {
+  display: block; /* Exibe como bloco */
+  position: absolute; /* Posição absoluta */
+  content: ""; /* Conteúdo vazio */
+  top: 100%; /* Alinhado ao fundo */
+  left: 5%; /* Alinhado à esquerda */
+  transform: translate(50%, -50%) rotate(45deg) translateZ(0); /* Ajusta a posição e rotação */
+  height: 15px; /* Altura */
+  width: 15px; /* Largura */
+  background: linear-gradient(-45deg, #fff 52%, transparent 0); /* Gradiente */
+  border: inherit; /* Herda a borda */
+  border-width: 0 1px 1px 0; /* Largura da borda */
+  border-radius: 0 0 2px 0; /* Arredonda as bordas */
+}
+
+.bubble:hover {
+  border: 1px solid transparent; /* Borda transparente ao passar o mouse */
+  cursor: pointer; /* Muda o cursor para uma mão ao passar sobre o bubble */
+  transform: translateY(-20px); /* Move o bubble para cima ao passar o mouse */
+  transition: 0.3s; /* Transição suave para mudanças de estado */
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.company-name {
+  background: linear-gradient(to bottom, #962cdd 10%, #b76ee7 100%); /* Gradiente para o texto */
+  background-clip: border-box; /* Clip de fundo */
+  -webkit-background-clip: text; /* Clip de fundo para Webkit */
+  -webkit-text-fill-color: transparent; /* Preenchimento de texto transparente para Webkit */
+  font-weight: 700; /* Peso da fonte */
+}
+
+.message {
+  margin-bottom: 20px; /* Margem inferior */
+  font-style: italic; /* Estilo itálico */
+  line-height: 1.5; /* Altura da linha */
+  font-size: 18px; /* Tamanho da fonte */
+}
+
+.client-info {
+  margin-top: 1.875rem; /* Margem superior */
+  display: flex; /* Exibe como flexbox */
+  flex-flow: row; /* Direção do flexbox */
+  justify-content: start; /* Alinha itens ao início */
+  align-items: center; /* Alinha itens ao centro */
+}
+
+.name h4 {
+  line-height: 1.5 !important; /* Altura da linha */
+}
+
+.avatar {
+  border-radius: 50%; /* Arredonda as bordas */
+  width: 60px; /* Largura */
+  margin-right: 20px; /* Margem à direita */
+}
+
+.role {
+  font-size: 16px; /* Tamanho da fonte */
+  line-height: 1; /* Altura da linha */
+}
+/* Fim: Estilo da Seção de Depoimentos */
+
+/* Estilo da Seção Como Assistir */
+#howto {
+  background: #962cdd; /* Cor de fundo */
+  background: -moz-linear-gradient(
+    top,
+    #962cdd 37%,
+    #b76ee7 98%
+  ); /* Gradiente para Firefox */
+  background: -webkit-linear-gradient(
+    top,
+    #962cdd 37%,
+    #b76ee7 98%
+  ); /* Gradiente para Chrome/Safari */
+  background: linear-gradient(
+    to bottom,
+    #962cdd 37%,
+    #b76ee7 98%
+  ); /* Gradiente padrão */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d90647', endColorstr='#eb402c',GradientType=0 ); /* Gradiente para IE */
+  background-repeat: no-repeat; /* Não repete o fundo */
+  color: #ffffff; /* Cor do texto */
+  height: 24.375rem; /* Altura */
+  width: 100%; /* Largura total */
+  position: relative; /* Posição relativa */
+  margin-top: 6.25rem; /* Margem superior */
+}
+
+#howto p {
+  color: #ffffff; /* Cor do texto */
+  font-size: 16px; /* Tamanho da fonte */
+  line-height: 1.75; /* Altura da linha */
+}
+
+#howto h4 {
+  font-size: 1.5rem; /* Tamanho da fonte */
+  font-weight: 900; /* Peso da fonte */
+}
+
+.first-col {
+  text-align: right; /* Alinha o texto à direita */
+  float: right; /* Flutua à direita */
+}
+
+.third-col {
+  text-align: left; /* Alinha o texto à esquerda */
+  float: left; /* Flutua à esquerda */
+}
+
+.big_image {
+  /* position: absolute;
+  top: -66px; */
+  max-width: 325px; /* Largura máxima da imagem */
+  margin-top: -125px; /* Margem superior negativa */
+}
+
+.first-item,
+.last-item {
+  display: flex; /* Exibe como flexbox */
+}
+
+.item-icon1 {
+  margin-left: 40px; /* Margem à esquerda */
+}
+
+.item-icon1:hover,
+.item-icon2:hover {
+  transition: 0.3s; /* Transição suave para mudanças de estado */
+  transform: scale(1.1); /* Aumenta ligeiramente o ícone ao passar o mouse */
+  cursor: pointer; /* Muda o cursor para uma mão ao passar sobre o ícone */
+}
+
+.item-icon2 {
+  margin-right: 40px; /* Margem à direita */
+}
+
+.first-item,
+.last-item {
+  margin: 20px 0; /* Margem superior e inferior */
+}
+/* Fim: Estilo da Seção Como Assistir */
+
+/* Estilo da Seção de Inscrição */
+#subscribe {
+  padding: 150px 50px; /* Padding */
+  text-align: center; /* Alinha o texto ao centro */
+  border-bottom: 1px solid #e0e0e0; /* Borda inferior */
+}
+
+#subscribe p {
+  margin-top: 30px; /* Margem superior */
+}
+
+.subscribe-form {
+  position: relative; /* Posição relativa */
+  margin-top: 5rem; /* Margem superior */
+}
+
+.form-input {
+  border: none; /* Remove bordas */
+  height: 50px; /* Altura */
+  outline: none; /* Remove contorno */
+  width: 40%; /* Largura */
+  background-color: #f8f8f8; /* Cor de fundo */
+  border-radius: 3.125rem; /* Arredonda as bordas */
+  padding: 0 30px; /* Padding */
+  padding-right: 210px; /* Padding à direita */
+  /*   position: relative; */
+  font-size: 18px; /* Tamanho da fonte */
+}
+
+.subscribe-btn {
+  background: linear-gradient(to bottom, #962cdd 10%, #b76ee7 100%); /* Gradiente para o botão */
+  border: none; /* Remove bordas */
+  box-shadow: 0 10px 30px rgba(223, 27, 60, 0.3); /* Sombra */
+  color: #ffffff; /* Cor do texto */
+  outline: none; /* Remove contorno */
+  padding: 15px 60px; /* Padding */
+  position: absolute; /* Posição absoluta */
+  margin-left: -200px; /* Margem à esquerda */
+}
+.subscribe-btn:hover {
+  background: linear-gradient(to bottom, #962cdd 10%, #b76ee7 100%); /* Gradiente para o botão ao passar o mouse */
+  color: #ffffff; /* Cor do texto ao passar o mouse */
+}
+/* Fim: Estilo da Seção de Inscrição */
+
+/* Estilo da Seção Baixe o App */
+#download {
+  text-align: center; /* Alinha o texto ao centro */
+  padding: 100px; /* Padding */
+}
+
+#download * {
+  margin: 25px auto; /* Margem superior e inferior */
+}
+
+.app-logo {
+  -webkit-filter: drop-shadow(0 10px 30px rgba(223, 27, 60, 0.3)); /* Sombra para Webkit */
+  filter: drop-shadow(0 10px 30px rgba(223, 27, 60, 0.3)); /* Sombra */
+}
+/* Fim: Estilo da Seção Baixe o App */
+
+/* Estilo da Seção de Rodapé */
+#footer {
+  border-top: 1px solid #e0e0e0; /* Borda superior */
+  display: flex; /* Exibe como flexbox */
+  flex-flow: row; /* Direção do flexbox */
+  justify-content: space-between; /* Espaça os itens entre si */
+  padding: 20px 50px; /* Padding */
+  color: #363636; /* Cor do texto */
+}
+
+.links ul li {
+  display: inline-block; /* Exibe como bloco inline */
+  margin: 10px 0; /* Margem superior e inferior */
+  margin-right: 30px; /* Margem à direita */
+  font-size: 18px; /* Tamanho da fonte */
+}
+
+.links ul li:hover {
+  background: linear-gradient(to bottom, #962cdd 10%, #b76ee7 100%); /* Gradiente para o texto ao passar o mouse */
+  background-clip: border-box; /* Clip de fundo */
+  -webkit-background-clip: text; /* Clip de fundo para Webkit */
+  -webkit-text-fill-color: transparent; /* Preenchimento de texto transparente para Webkit */
+}
+
+.links ul li a {
+  color: #363636; /* Cor dos links */
+}
+/* Fim: Estilo da Seção de Rodapé */
+
+/* Fim: Regras Principais de CSS */
+
+/* Dispositivos extra pequenos (telefones em modo retrato, menos de 576px) */
+@media (max-width: 575.98px) {
+  body {
+    font-size: 16px !important; /* Tamanho da fonte */
+  }
+  h1 {
+    font-size: 36px; /* Tamanho da fonte para h1 */
+  }
+
+  h2 {
+    font-size: 30px; /* Tamanho da fonte para h2 */
+  }
+
+  .row {
+    max-width: 90%; /* Largura máxima da linha */
+  }
+
+  .btn {
+    padding: 10px 20px; /* Padding do botão */
+    font-size: 16px; /* Tamanho da fonte do botão */
+  }
+
+  section {
+    padding: 20px; /* Padding da seção */
+  }
+
+  .span_1_of_3 {
+    width: 100% !important; /* Largura total */
+  }
+
+  .span_1_of_2 {
+    width: 100% !important; /* Largura total */
+  }
+
+  ::placeholder {
+    text-align: center; /* Alinha o texto ao centro */
+  }
+
+  #mobileNav {
+    display: block; /* Exibe o menu móvel */
+  }
+
+  #home {
+    padding: 30px; /* Padding */
+  }
+
+  #hero {
+    margin: 50px 0; /* Margem superior e inferior */
+  }
+
+  .logo {
+    font-size: 1.875rem; /* Tamanho da fonte do logotipo */
+  }
+
+  #navbar {
+    display: none; /* Esconde a navbar */
+  }
+
+  .hero-description {
+    text-align: center; /* Alinha o texto ao centro */
+    margin-top: 0.625rem; /* Margem superior */
+    float: none; /* Remove flutuação */
+    margin-left: 0; /* Remove margem à esquerda */
+  }
+  .hero-description p {
+    font-size: 16px; /* Tamanho da fonte dos parágrafos */
+    margin-bottom: 1.875rem; /* Margem inferior */
+  }
+  .hero-img {
+    display: none; /* Esconde a imagem */
+  }
+
+  #features {
+    padding-bottom: 50px; /* Padding inferior */
+  }
+
+  .features-description {
+    width: 100%; /* Largura total */
+  }
+
+  .little-description {
+    width: 100%; /* Largura total */
+  }
+
+  .section-description {
+    margin: 0; /* Remove margens */
+  }
+
+  .second-features-row {
+    margin-top: 3.25rem; /* Margem superior */
+    display: flex; /* Exibe como flexbox */
+    flex-flow: column; /* Direção do flexbox */
+    flex-direction: column-reverse; /* Direção reversa do flexbox */
+  }
+
+  #testimonial .row {
+    margin-top: 3.25rem; /* Margem superior */
+  }
+
+  #howto {
+    height: 100%; /* Altura total */
+    margin-top: 0; /* Remove margem superior */
+    padding: 50px 0; /* Padding */
+  }
+
+  #howto p {
+    width: 80%; /* Largura */
+    margin-left: 10%; /* Margem à esquerda */
+  }
+
+  .item-icon1 {
+    margin: 10px auto; /* Margem superior e inferior */
+  }
+
+  .item-icon2 {
+    margin: 10px auto; /* Margem superior e inferior */
+  }
+
+  .third-col {
+    margin-top: 30px; /* Margem superior */
+  }
+
+  .first-col .first-item,
+  .last-item {
+    display: flex; /* Exibe como flexbox */
+    flex-flow: column; /* Direção do flexbox */
+    flex-direction: column-reverse; /* Direção reversa do flexbox */
+    text-align: center; /* Alinha o texto ao centro */
+  }
+
+  .third-col .last-item {
+    display: flex; /* Exibe como flexbox */
+    flex-flow: column; /* Direção do flexbox */
+    flex-direction: column; /* Direção do flexbox */
+    text-align: center; /* Alinha o texto ao centro */
+  }
+
+  .big_image {
+    display: block; /* Exibe como bloco */
+    position: static; /* Posição estática */
+    height: auto; /* Altura automática */
+    width: 100% !important; /* Largura total */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    margin-top: 50px; /* Margem superior */
+  }
+
+  .subscribe-form {
+    margin-top: 2rem; /* Margem superior */
+  }
+
+  .subscribe-btn {
+    position: static; /* Posição estática */
+    margin-left: 0; /* Remove margem à esquerda */
+    margin-top: 20px; /* Margem superior */
+  }
+
+  #footer {
+    border-top: 1px solid #e0e0e0; /* Borda superior */
+    color: #363636; /* Cor do texto */
+    display: flex; /* Exibe como flexbox */
+    flex-flow: column; /* Direção do flexbox */
+    justify-content: center; /* Justifica itens ao centro */
+    text-align: center; /* Alinha o texto ao centro */
+  }
+  .links ul li {
+    text-align: center; /* Alinha o texto ao centro */
+    display: inline-block; /* Exibe como bloco inline */
+    margin: 8px 0; /* Margem superior e inferior */
+    margin-right: 20px; /* Margem à direita */
+    font-size: 16px; /* Tamanho da fonte */
+  }
+
+  .language-option {
+    margin: 5px auto; /* Margem superior e inferior */
+  }
+
+  #testimonial .col {
+    margin-bottom: 50px; /* Margem inferior */
+  }
+  #download {
+    padding: 50px 0; /* Padding */
+  }
+  #subscribe {
+    padding: 100px 0; /* Padding */
+  }
+
+  .form-input {
+    width: 80%; /* Largura */
+    padding: 0 15px; /* Padding */
+    padding-right: 15px; /* Padding à direita */
+    font-size: 16px; /* Tamanho da fonte */
+    display: block; /* Exibe como bloco */
+    margin: auto; /* Centraliza horizontalmente */
+  }
+}
+
+/* Dispositivos pequenos (telefones em modo paisagem, 576px e acima) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  body {
+    font-size: 18px; /* Tamanho da fonte */
+  }
+  h1 {
+    font-size: 50px; /* Tamanho da fonte para h1 */
+  }
+
+  h2 {
+    font-size: 40px; /* Tamanho da fonte para h2 */
+  }
+
+  section {
+    padding: 20px; /* Padding da seção */
+  }
+
+  .span_1_of_3 {
+    width: 100% !important; /* Largura total */
+  }
+
+  .span_1_of_2 {
+    width: 100% !important; /* Largura total */
+  }
+
+  ::placeholder {
+    text-align: center; /* Alinha o texto ao centro */
+  }
+
+  #mobileNav {
+    display: block; /* Exibe o menu móvel */
+  }
+  #navbar {
+    display: none; /* Esconde a navbar */
+  }
+
+  #hero {
+    margin: 50px 0; /* Margem superior e inferior */
+  }
+
+  .logo {
+    font-size: 1.875rem; /* Tamanho da fonte do logotipo */
+  }
+
+  .hero-description {
+    text-align: center; /* Alinha o texto ao centro */
+    margin-top: 0.625rem; /* Margem superior */
+    float: none; /* Remove flutuação */
+    margin-left: 0; /* Remove margem à esquerda */
+  }
+  .hero-description p {
+    margin-bottom: 1.875rem; /* Margem inferior */
+  }
+  .hero-img {
+    display: none; /* Esconde a imagem */
+  }
+
+  #features {
+    padding-bottom: 50px; /* Padding inferior */
+  }
+
+  .features-description {
+    width: 100%; /* Largura total */
+  }
+
+  .little-description {
+    width: 100%; /* Largura total */
+  }
+
+  .section-description {
+    margin: 0; /* Remove margens */
+  }
+
+  .second-features-row {
+    margin-top: 3.25rem; /* Margem superior */
+    display: flex; /* Exibe como flexbox */
+    flex-flow: column; /* Direção do flexbox */
+    flex-direction: column-reverse; /* Direção reversa do flexbox */
+  }
+
+  #testimonial .row {
+    margin-top: 3.25rem; /* Margem superior */
+  }
+
+  #howto {
+    height: 100%; /* Altura total */
+    margin-top: 0; /* Remove margem superior */
+    padding: 50px 0; /* Padding */
+  }
+
+  #howto p {
+    width: 80%; /* Largura */
+    margin-left: 10%; /* Margem à esquerda */
+  }
+
+  .item-icon1 {
+    margin: 10px auto; /* Margem superior e inferior */
+  }
+
+  .item-icon2 {
+    margin: 10px auto; /* Margem superior e inferior */
+  }
+
+  .third-col {
+    margin-top: 30px; /* Margem superior */
+  }
+
+  .first-col .first-item,
+  .last-item {
+    display: flex; /* Exibe como flexbox */
+    flex-flow: column; /* Direção do flexbox */
+    flex-direction: column-reverse; /* Direção reversa do flexbox */
+    text-align: center; /* Alinha o texto ao centro */
+  }
+
+  .third-col .last-item {
+    display: flex; /* Exibe como flexbox */
+    flex-flow: column; /* Direção do flexbox */
+    flex-direction: column; /* Direção do flexbox */
+    text-align: center; /* Alinha o texto ao centro */
+  }
+
+  .big_image {
+    display: block; /* Exibe como bloco */
+    position: static; /* Posição estática */
+    height: auto; /* Altura automática */
+    width: 100% !important; /* Largura total */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    margin-top: 50px; /* Margem superior */
+  }
+
+  .subscribe-form {
+    margin-top: 2rem; /* Margem superior */
+  }
+
+  .subscribe-btn {
+    position: static; /* Posição estática */
+    margin-left: 0; /* Remove margem à esquerda */
+    margin-top: 20px; /* Margem superior */
+  }
+
+  #footer {
+    border-top: 1px solid #e0e0e0; /* Borda superior */
+    color: #363636; /* Cor do texto */
+    display: flex; /* Exibe como flexbox */
+    flex-flow: column; /* Direção do flexbox */
+    justify-content: center; /* Justifica itens ao centro */
+    text-align: center; /* Alinha o texto ao centro */
+  }
+  .links ul li {
+    text-align: center; /* Alinha o texto ao centro */
+    display: inline-block; /* Exibe como bloco inline */
+    margin: 8px 0; /* Margem superior e inferior */
+    margin-right: 20px; /* Margem à direita */
+    font-size: 18px; /* Tamanho da fonte */
+  }
+
+  .language-option {
+    margin: 5px auto; /* Margem superior e inferior */
+  }
+
+  #testimonial .col {
+    margin-bottom: 50px; /* Margem inferior */
+  }
+  #download {
+    padding: 50px 0; /* Padding */
+  }
+  #subscribe {
+    padding: 100px 0; /* Padding */
+  }
+
+  .form-input {
+    width: 60%; /* Largura */
+    padding: 0 15px; /* Padding */
+    padding-right: 15px; /* Padding à direita */
+    font-size: 18px; /* Tamanho da fonte */
+    display: block; /* Exibe como bloco */
+    margin: auto; /* Centraliza horizontalmente */
+  }
+}
+
+/* Dispositivos médios (tablets, 768px e acima) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  h1 {
+    font-size: 50px; /* Tamanho da fonte para h1 */
+  }
+
+  h2 {
+    font-size: 40px; /* Tamanho da fonte para h2 */
+  }
+  #howto h4 {
+    font-size: 1.3rem; /* Tamanho da fonte */
+    font-weight: 900; /* Peso da fonte */
+  }
+
+  .row {
+    max-width: 90%; /* Largura máxima da linha */
+  }
+
+  .btn {
+    padding: 10px 20px; /* Padding do botão */
+    font-size: 16px; /* Tamanho da fonte do botão */
+  }
+
+  section {
+    padding: 20px; /* Padding da seção */
+  }
+  .btn {
+    padding: 15px 30px; /* Padding do botão */
+  }
+  #mobileNav {
+    display: block; /* Exibe o menu móvel */
+    right: 5%; /* Alinhado à direita */
+  }
+  #mobileNav span {
+    font-size: 2.5rem; /* Tamanho da fonte do menu móvel */
+  }
+  #navbar {
+    display: none; /* Esconde a navbar */
+  }
+  .overlay-content a {
+    font-size: 40px; /* Tamanho da fonte dos links */
+  }
+
+  .hero-img {
+    max-width: 45% !important; /* Largura máxima da imagem */
+    right: 0.375rem; /* Alinhado à direita */
+  }
+
+  .section-description {
+    margin-top: 150px; /* Margem superior */
+  }
+
+  .little-description {
+    width: 100%; /* Largura total */
+  }
+
+  #howto {
+    height: 100%; /* Altura total */
+    margin-bottom: 5rem; /* Margem inferior */
+    margin-top: 0; /* Remove margem superior */
+    margin-top: 10rem; /* Margem superior */
+    padding: 50px 0; /* Padding */
+    position: relative; /* Posição relativa */
+    width: 100%; /* Largura total */
+  }
+
+  #howto #howto p {
+    width: 80%; /* Largura */
+    margin-left: 10%; /* Margem à esquerda */
+  }
+
+  .item-icon1 {
+    margin: 10px auto; /* Margem superior e inferior */
+  }
+
+  .item-icon2 {
+    margin: 10px auto; /* Margem superior e inferior */
+  }
+
+  .first-col .first-item,
+  .last-item {
+    display: flex; /* Exibe como flexbox */
+    flex-flow: column; /* Direção do flexbox */
+    flex-direction: column-reverse; /* Direção reversa do flexbox */
+    text-align: center; /* Alinha o texto ao centro */
+  }
+
+  .third-col .last-item {
+    display: flex; /* Exibe como flexbox */
+    flex-flow: column; /* Direção do flexbox */
+    flex-direction: column; /* Direção do flexbox */
+    text-align: center; /* Alinha o texto ao centro */
+  }
+
+  .big_image {
+    display: block; /* Exibe como bloco */
+    position: static; /* Posição estática */
+    height: auto; /* Altura automática */
+    width: 100% !important; /* Largura total */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    margin-top: 50px; /* Margem superior */
+  }
+
+  .subscribe-form {
+    margin-top: 2rem; /* Margem superior */
+  }
+
+  .subscribe-btn {
+    margin-left: -100px; /* Margem à esquerda */
+    position: absolute; /* Posição absoluta */
+  }
+  #subscribe {
+    padding: 100px; /* Padding */
+  }
+
+  .form-input {
+    width: 60%; /* Largura */
+    padding: 0 30px; /* Padding */
+    padding-right: 100px; /* Padding à direita */
+    font-size: 18px; /* Tamanho da fonte */
+    margin: auto; /* Centraliza horizontalmente */
+  }
+}
+
+/* Dispositivos grandes (desktops, 992px e acima) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  h1 {
+    font-size: 50px; /* Tamanho da fonte para h1 */
+  }
+
+  h2 {
+    font-size: 40px; /* Tamanho da fonte para h2 */
+  }
+  #howto h4 {
+    font-size: 1.3rem; /* Tamanho da fonte */
+    font-weight: 900; /* Peso da fonte */
+  }
+
+  .row {
+    max-width: 90%; /* Largura máxima da linha */
+  }
+
+  .btn {
+    padding: 10px 20px; /* Padding do botão */
+    font-size: 16px; /* Tamanho da fonte do botão */
+  }
+
+  section {
+    padding: 20px; /* Padding da seção */
+  }
+  .btn {
+    padding: 15px 30px; /* Padding do botão */
+  }
+  #mobileNav {
+    display: block; /* Exibe o menu móvel */
+    right: 5%; /* Alinhado à direita */
+  }
+  #mobileNav span {
+    font-size: 2.5rem; /* Tamanho da fonte do menu móvel */
+  }
+  #navbar {
+    display: none; /* Esconde a navbar */
+  }
+  .overlay-content a {
+    font-size: 40px; /* Tamanho da fonte dos links */
+  }
+
+  .hero-img {
+    max-width: 40% !important; /* Largura máxima da imagem */
+    right: 0.375rem; /* Alinhado à direita */
+  }
+
+  .section-description {
+    margin-top: 180px; /* Margem superior */
+  }
+
+  .little-description {
+    width: 100%; /* Largura total */
+  }
+
+  #howto {
+    height: 100%; /* Altura total */
+    margin-bottom: 5rem; /* Margem inferior */
+    margin-top: 10rem; /* Margem superior */
+    padding: 50px 0; /* Padding */
+    position: relative; /* Posição relativa */
+    width: 100%; /* Largura total */
+  }
+
+  #howto #howto p {
+    width: 80%; /* Largura */
+    margin-left: 10%; /* Margem à esquerda */
+  }
+
+  .item-icon1 {
+    margin: 10px auto; /* Margem superior e inferior */
+  }
+
+  .item-icon2 {
+    margin: 10px auto; /* Margem superior e inferior */
+  }
+
+  .first-col .first-item,
+  .last-item {
+    display: flex; /* Exibe como flexbox */
+    flex-flow: column; /* Direção do flexbox */
+    flex-direction: column-reverse; /* Direção reversa do flexbox */
+    text-align: center; /* Alinha o texto ao centro */
+  }
+
+  .third-col .last-item {
+    display: flex; /* Exibe como flexbox */
+    flex-flow: column; /* Direção do flexbox */
+    flex-direction: column; /* Direção do flexbox */
+    text-align: center; /* Alinha o texto ao centro */
+  }
+
+  .big_image {
+    display: block; /* Exibe como bloco */
+    position: static; /* Posição estática */
+    height: auto; /* Altura automática */
+    width: 100% !important; /* Largura total */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    margin-top: 0px; /* Margem superior */
+  }
+
+  .subscribe-form {
+    margin-top: 2rem; /* Margem superior */
+  }
+
+  .subscribe-btn {
+    margin-left: -100px; /* Margem à esquerda */
+    position: absolute; /* Posição absoluta */
+  }
+  #subscribe {
+    padding: 100px; /* Padding */
+  }
+
+  .form-input {
+    width: 50%; /* Largura */
+    padding: 0 30px; /* Padding */
+    padding-right: 100px; /* Padding à direita */
+    font-size: 18px; /* Tamanho da fonte */
+    margin: auto; /* Centraliza horizontalmente */
+  }
+}
+
+/* Dispositivos extra grandes (grandes desktops, 1200px e acima) */
+@media (min-width: 1200px) {
+  .little-description {
+    margin-top: 1.875rem; /* Margem superior */
+    font-size: 1.125rem; /* Tamanho da fonte */
+    width: 100%; /* Largura total */
+  }
+  #subscribe {
+    padding: 100px; /* Padding */
+  }
+
+  #howto {
+    margin-bottom: 5rem; /* Margem inferior */
+    margin-top: 10rem; /* Margem superior */
+    padding: 50px 0; /* Padding */
+    position: relative; /* Posição relativa */
+    width: 100%; /* Largura total */
+    height: 422px; /* Altura */
+  }
+
+  .big_image {
+    max-width: 350px; /* Largura máxima da imagem */
+    margin-top: -135px; /* Margem superior negativa */
+  }
+}
